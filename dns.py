@@ -48,14 +48,15 @@ def buildresponce(data):
     # DNS Header
     dnsheader = TransactionID+Flags+QDCOUNT+ACOUNT+NSCOUNT+ARCOUNT
 
-    # DNS Body 
-    dnsbody = b''
 
     records, rectype, domainname = getrecs(data[12:])
     
-
+     # DNS questions
     dnsquestion = buildquestion(domainname, rectype)
 
+
+    # DNS Body 
+    dnsbody = b''
 
 
     for record in records:
